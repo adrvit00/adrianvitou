@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #000;
+        }
+
+        header {
+            background: #000;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #000;
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            color: #000;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .project-card h3 {
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .project-card .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill {
+            background: #000;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Adrian Vitou</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>I lead high-impact video production and motion graphics initiatives with creativity, precision, and strategic vision. Leveraging AI-powered tools to accelerate workflows and elevate storytelling, I deliver innovative, visually compelling content that engages audiences, inspires teams, and drives measurable results—always prioritizing client and stakeholder satisfaction and retention.</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/1043539388" allowfullscreen></iframe>
+                </div>
+                <h3>Broadcast Campaign</h3>
+            </div>
+            <div class="project-card">
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/1086512237" allowfullscreen></iframe>
+                </div>
+                <h3>St. Francis De Sales</h3>
+            </div>
+            <div class="project-card">
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/942476969" allowfullscreen></iframe>
+                </div>
+                <h3>Employee Retention</h3>
+            </div>
+            <div class="project-card">
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/824796112" allowfullscreen></iframe>
+                </div>
+                <h3>Customer Education</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+            <span class="skill">After Effects</span>
+            <span class="skill">Premiere Pro</span>
+            <span class="skill">Photoshop</span>
+            <span class="skill">Illustrator</span>
+            <span class="skill">Motion Graphics</span>
+            <span class="skill">Video Production</span>
+            <span class="skill">Project Management</span>
+            <span class="skill">Team Leadership</span>
+            <span class="skill">Creative Strategy</span>
+            <span class="skill">Visual Storytelling</span>
+            <span class="skill">Scriptwriting</span>
+            <span class="skill">Audio Production</span>
+            <span class="skill">Studio Production</span>
+            <span class="skill">Sony Camera Systems</span>
+            <span class="skill">Lighting</span>
+            <span class="skill">Sound Design</span>
+            <span class="skill">Design Sense</span>
+            <span class="skill">Emotional Intelligence</span>
+            <span class="skill">Adobe Firefly</span>
+            <span class="skill">Runway ML</span>
+            <span class="skill">Eleven Labs</span>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-info">
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/adrianvitou/" target="_blank">linkedin.com/in/adrianvitou</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Adrian Vitou. All rights reserved.</p>
+    </footer>
+</body>
+</html>
