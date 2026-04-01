@@ -382,41 +382,7 @@
             letter-spacing: 0.04em;
         }
 
-        .visitor-counter {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .counter-label {
-            font-size: 0.6rem;
-            letter-spacing: 0.14em;
-            color: var(--muted);
-        }
-
-        .counter-digits {
-            display: flex;
-            gap: 2px;
-        }
-
-        .counter-digit {
-            background: #0d0d0b;
-            border: 1px solid #333;
-            border-top-color: #222;
-            border-bottom-color: #444;
-            color: var(--accent);
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            font-weight: 700;
-            width: 18px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.04);
-        }
-
-        @keyframes fadeUp {
+@keyframes fadeUp {
             from { opacity: 0; transform: translateY(18px); }
             to   { opacity: 1; transform: translateY(0); }
         }
@@ -548,36 +514,10 @@
     <footer>
         <span>© 2026 Adrian Vitou</span>
         <span>Video Production · Motion Graphics · Creative Direction</span>
-        <div class="visitor-counter">
-            <span class="counter-label">VISITORS</span>
-            <div class="counter-digits" id="counterDigits"></div>
-        </div>
+
     </footer>
 
     <script>
-        // Real visitor counter via CountAPI
-        (async function() {
-            const el = document.getElementById('counterDigits');
-            function renderCount(n) {
-                el.innerHTML = '';
-                String(n).padStart(6, '0').split('').forEach(d => {
-                    const span = document.createElement('span');
-                    span.className = 'counter-digit';
-                    span.textContent = d;
-                    el.appendChild(span);
-                });
-            }
-            renderCount(0);
-            try {
-                const res = await fetch('https://api.countapi.xyz/hit/adrianvitou.com/visits');
-                const data = await res.json();
-                renderCount(data.value);
-            } catch(e) {
-                // silently fail, show dashes
-                el.querySelectorAll('.counter-digit').forEach(d => d.textContent = '-');
-            }
-        })();
-
         // Fetch thumbnails from Vimeo oEmbed API
         document.querySelectorAll('.video-card').forEach(async card => {
             const id = card.dataset.vimeo;
