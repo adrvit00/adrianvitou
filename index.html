@@ -3,160 +3,407 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Adrian Vitou — Video Production & Motion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --white: #f5f4f0;
+            --off-white: #e8e6e0;
+            --black: #0a0a09;
+            --mid: #1e1e1c;
+            --muted: #888884;
+            --accent: #c8f55a;
+            --border: rgba(255,255,255,0.08);
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--black);
+            color: var(--white);
             line-height: 1.6;
-            color: #000;
-        }
-
-        header {
-            background: #000;
-            color: white;
-            padding: 1rem 2rem;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 1.5rem;
-            margin: 0;
-            font-weight: 400;
-            letter-spacing: 2px;
+            overflow-x: hidden;
         }
 
         nav {
-            background: white;
-            padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
+            position: fixed;
+            top: 0; left: 0; right: 0;
             z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
+            padding: 1.25rem 3rem;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10,10,9,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
         }
 
-        nav a {
-            color: #000;
+        .nav-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            color: var(--white);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #666;
+        .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
         }
+
+        .nav-links a:hover { color: var(--white); }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 3rem 5rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 50% at 75% 35%, rgba(200,245,90,0.045) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3.5rem, 8vw, 7.5rem);
+            line-height: 1.0;
+            font-weight: 400;
+            color: var(--white);
+            max-width: 14ch;
+            animation: fadeUp 0.6s 0.1s ease both;
+        }
+
+        .hero h1 em { font-style: italic; color: var(--off-white); opacity: 0.55; }
+
+        .hero-sub {
+            margin-top: 2rem;
+            max-width: 520px;
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            animation: fadeUp 0.6s 0.2s ease both;
+        }
+
+        .hero-cta {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+            animation: fadeUp 0.6s 0.3s ease both;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.75rem 1.75rem;
+            background: var(--accent);
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            border-radius: 2px;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+
+        .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+        .btn-ghost {
+            color: var(--muted);
+            font-size: 0.85rem;
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            transition: color 0.2s;
+        }
+
+        .btn-ghost:hover { color: var(--white); }
 
         section {
-            max-width: 1000px;
+            padding: 6rem 3rem;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
         }
 
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #000;
+        .section-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .about-content {
-            font-size: 1.1rem;
-            color: #000;
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            max-width: 80px;
         }
 
-        .projects {
+        #about { border-top: 1px solid var(--border); }
+
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 3rem;
+            grid-template-columns: 1fr 2fr;
+            gap: 5rem;
+            align-items: start;
         }
 
-        .project-card {
-            background: white;
-            border-radius: 8px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+        .about-heading {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 400;
+            line-height: 1.2;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        .about-heading em { font-style: italic; opacity: 0.45; }
+
+        .about-body { color: var(--muted); font-size: 1.05rem; font-weight: 300; line-height: 1.9; }
+
+        #projects { border-top: 1px solid var(--border); }
+
+        .reel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
-        .project-card h3 {
-            color: #000;
-            margin-bottom: 0.5rem;
+        .video-card {
+            background: var(--mid);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s, transform 0.3s;
         }
 
-        .project-card .video-container {
+        .video-card:hover { border-color: rgba(200,245,90,0.22); transform: translateY(-3px); }
+
+        /* Thumbnail play button */
+        .video-thumb {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            margin-bottom: 1rem;
-            border-radius: 4px;
+            cursor: pointer;
+            background: #111;
         }
 
-        .project-card .video-container iframe {
+        .video-thumb img {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, opacity 0.3s;
+        }
+
+        .video-card:hover .video-thumb img { transform: scale(1.03); }
+
+        .video-thumb .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 56px;
+            height: 56px;
+            background: rgba(0,0,0,0.55);
+            border: 2px solid rgba(255,255,255,0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+            z-index: 2;
+        }
+
+        .video-thumb .play-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+            margin-left: 3px;
+        }
+
+        .video-card:hover .play-btn {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translate(-50%, -50%) scale(1.08);
+        }
+
+        .video-card:hover .play-btn svg { fill: var(--black); }
+
+        /* Overlay scrim */
+        .video-thumb::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Live iframe after click */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             border: none;
         }
 
-        .skills {
+        .video-meta {
+            padding: 1rem 1.25rem;
             display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .video-title { font-size: 0.88rem; font-weight: 400; color: var(--off-white); }
+
+        .video-tag {
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding: 0.2rem 0.55rem;
+            border: 1px solid rgba(200,245,90,0.28);
+            border-radius: 2px;
+        }
+
+        #skills { border-top: 1px solid var(--border); }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+        }
+
+        .skill-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            transition: color 0.2s;
+        }
+
+        .skill-item::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.5;
+            flex-shrink: 0;
+        }
+
+        .skill-item:hover { color: var(--white); }
+
+        #contact { border-top: 1px solid var(--border); }
+
+        .contact-inner {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 3rem;
             flex-wrap: wrap;
-            gap: 1rem;
         }
 
-        .skill {
-            background: #000;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+        .contact-heading {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.1;
         }
 
-        .contact-info {
-            text-align: center;
-            font-size: 1.1rem;
-        }
+        .contact-heading em { font-style: italic; opacity: 0.4; }
 
-        .contact-info a {
-            color: #667eea;
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
             text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            border-bottom: 1px solid rgba(200,245,90,0.3);
+            padding-bottom: 3px;
+            transition: opacity 0.2s;
         }
+
+        .contact-link:hover { opacity: 0.7; }
 
         footer {
-            background: #2d3748;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            border-top: 1px solid var(--border);
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { gap: 1.5rem; }
+            .hero { padding: 0 1.5rem 4rem; }
+            section { padding: 4rem 1.5rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .reel-grid { grid-template-columns: 1fr; }
+            .contact-inner { flex-direction: column; align-items: flex-start; }
+            footer { flex-direction: column; gap: 0.5rem; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Adrian Vitou</h1>
-    </header>
 
     <nav>
-        <ul>
+        <a href="#" class="nav-name">Adrian Vitou</a>
+        <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Reel</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -164,59 +411,141 @@
         </ul>
     </nav>
 
+    <div class="hero">
+        <p class="hero-eyebrow">Video Production &amp; Motion Graphics</p>
+        <h1>Stories that <em>move</em> people.</h1>
+        <p class="hero-sub">High-impact multimedia production spanning video, motion graphics, broadcast, and digital content — crafted with creativity, precision, and strategic vision.</p>
+        <div class="hero-cta">
+            <a href="#projects" class="btn-primary">View Reel</a>
+            <a href="#contact" class="btn-ghost">Get in touch →</a>
+        </div>
+    </div>
+
     <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <p>I lead high-impact video production and motion graphics initiatives with creativity, precision, and strategic vision. Leveraging AI-powered tools to accelerate workflows and elevate storytelling, I deliver innovative, visually compelling content that engages audiences, inspires teams, and drives measurable results—always prioritizing client and stakeholder satisfaction and retention.</p>
+        <p class="section-label">About</p>
+        <div class="about-grid">
+            <h2 class="about-heading">Creative<br>Director &amp;<br><em>Storyteller</em></h2>
+            <p class="about-body">I lead high-impact multimedia production initiatives — spanning video, motion graphics, broadcast, and digital content — with creativity, precision, and strategic vision. From concept to final delivery, I craft immersive visual experiences that engage audiences, inspire teams, and drive measurable results — always prioritizing client and stakeholder satisfaction and retention.</p>
         </div>
     </section>
 
     <section id="projects">
-        <div class="projects">
-            <div class="project-card">
-                <div class="video-container">
-                    <iframe src="https://player.vimeo.com/video/935534253" allowfullscreen></iframe>
+        <p class="section-label">Selected Work</p>
+        <div class="reel-grid" id="reelGrid">
+
+            <div class="video-card" data-vimeo="935534253" data-title="Showreel" data-tag="Featured">
+                <div class="video-thumb" onclick="playVideo(this)">
+                    <img src="" alt="Showreel thumbnail" loading="lazy">
+                    <div class="play-btn">
+                        <svg viewBox="0 0 16 16"><path d="M3 2.5l11 5.5-11 5.5V2.5z"/></svg>
+                    </div>
+                </div>
+                <div class="video-meta">
+                    <span class="video-title">Showreel</span>
+                    <span class="video-tag">Featured</span>
                 </div>
             </div>
+
+            <div class="video-card" data-vimeo="1179332887" data-title="Broadcast and Digital" data-tag="Broadcast">
+                <div class="video-thumb" onclick="playVideo(this)">
+                    <img src="" alt="Broadcast and Digital thumbnail" loading="lazy">
+                    <div class="play-btn">
+                        <svg viewBox="0 0 16 16"><path d="M3 2.5l11 5.5-11 5.5V2.5z"/></svg>
+                    </div>
+                </div>
+                <div class="video-meta">
+                    <span class="video-title">Broadcast and Digital</span>
+                    <span class="video-tag">Broadcast</span>
+                </div>
+            </div>
+
+            <div class="video-card" data-vimeo="1179333644" data-title="Technical Help Video" data-tag="Tutorial">
+                <div class="video-thumb" onclick="playVideo(this)">
+                    <img src="" alt="Technical Help Video thumbnail" loading="lazy">
+                    <div class="play-btn">
+                        <svg viewBox="0 0 16 16"><path d="M3 2.5l11 5.5-11 5.5V2.5z"/></svg>
+                    </div>
+                </div>
+                <div class="video-meta">
+                    <span class="video-title">Technical Help Video</span>
+                    <span class="video-tag">Tutorial</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills">
-            <span class="skill">After Effects</span>
-            <span class="skill">Premiere Pro</span>
-            <span class="skill">Photoshop</span>
-            <span class="skill">Illustrator</span>
-            <span class="skill">Motion Graphics</span>
-            <span class="skill">Video Production</span>
-            <span class="skill">Project Management</span>
-            <span class="skill">Team Leadership</span>
-            <span class="skill">Creative Strategy</span>
-            <span class="skill">Visual Storytelling</span>
-            <span class="skill">Scriptwriting</span>
-            <span class="skill">Audio Production</span>
-            <span class="skill">Studio Production</span>
-            <span class="skill">Sony Camera Systems</span>
-            <span class="skill">Lighting</span>
-            <span class="skill">Sound Design</span>
-            <span class="skill">Design Sense</span>
-            <span class="skill">Emotional Intelligence</span>
-            <span class="skill">Adobe Firefly</span>
-            <span class="skill">Runway ML</span>
-            <span class="skill">Eleven Labs</span>
+        <p class="section-label">Capabilities</p>
+        <div class="skills-grid">
+            <div class="skill-item">After Effects</div>
+            <div class="skill-item">Premiere Pro</div>
+            <div class="skill-item">Photoshop</div>
+            <div class="skill-item">Illustrator</div>
+            <div class="skill-item">Motion Graphics</div>
+            <div class="skill-item">Video Production</div>
+            <div class="skill-item">Project Management</div>
+            <div class="skill-item">Team Leadership</div>
+            <div class="skill-item">Creative Strategy</div>
+            <div class="skill-item">Visual Storytelling</div>
+            <div class="skill-item">Scriptwriting</div>
+            <div class="skill-item">Audio Production</div>
+            <div class="skill-item">Studio Production</div>
+            <div class="skill-item">Sony Camera Systems</div>
+            <div class="skill-item">Lighting</div>
+            <div class="skill-item">Sound Design</div>
+            <div class="skill-item">Design Sense</div>
+            <div class="skill-item">Emotional Intelligence</div>
+            <div class="skill-item">Adobe Firefly</div>
+            <div class="skill-item">Runway ML</div>
+            <div class="skill-item">Eleven Labs</div>
         </div>
     </section>
 
     <section id="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-info">
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/adrianvitou/" target="_blank">linkedin.com/in/adrianvitou</a></p>
+        <p class="section-label">Contact</p>
+        <div class="contact-inner">
+            <h2 class="contact-heading">Let's make<br>something <em>great.</em></h2>
+            <a href="https://www.linkedin.com/in/adrianvitou/" target="_blank" class="contact-link">
+                Connect on LinkedIn ↗
+            </a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Adrian Vitou. All rights reserved.</p>
+        <span>© 2026 Adrian Vitou</span>
+        <span>Video Production · Motion Graphics · Creative Direction</span>
     </footer>
+
+    <script>
+        // Fetch thumbnails from Vimeo oEmbed API
+        document.querySelectorAll('.video-card').forEach(async card => {
+            const id = card.dataset.vimeo;
+            try {
+                const res = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}&width=640`);
+                const data = await res.json();
+                const img = card.querySelector('img');
+                if (img && data.thumbnail_url) {
+                    // Use the large thumbnail
+                    img.src = data.thumbnail_url.replace(/_\d+x\d+/, '_640');
+                }
+            } catch (e) {
+                // If fetch fails, hide the broken img gracefully
+                const thumb = card.querySelector('.video-thumb');
+                if (thumb) thumb.style.background = '#1a1a18';
+            }
+        });
+
+        // Swap thumbnail for live iframe on click
+        function playVideo(thumbEl) {
+            const card = thumbEl.closest('.video-card');
+            const id = card.dataset.vimeo;
+            const wrapper = document.createElement('div');
+            wrapper.className = 'video-wrapper';
+            wrapper.innerHTML = `<iframe src="https://player.vimeo.com/video/${id}?autoplay=1&color=c8f55a&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+            thumbEl.replaceWith(wrapper);
+        }
+    </script>
+
 </body>
 </html>
