@@ -191,6 +191,7 @@
         .about-body { color: var(--muted); font-size: 1.05rem; font-weight: 300; line-height: 1.9; }
 
         #projects { border-top: 1px solid var(--border); }
+        #nonprofit { border-top: 1px solid var(--border); }
 
         .reel-grid {
             display: grid;
@@ -406,6 +407,7 @@
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Reel</a></li>
+            <li><a href="#nonprofit">Non-Profit</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -475,6 +477,52 @@
         </div>
     </section>
 
+    <section id="nonprofit">
+        <p class="section-label">Non-Profit</p>
+        <div class="reel-grid" id="nonprofitGrid">
+
+            <div class="video-card" data-vimeo="749593650" data-title="Humane Society" data-tag="Non-Profit">
+                <div class="video-thumb" onclick="playVideo(this)">
+                    <img src="" alt="Humane Society thumbnail" loading="lazy">
+                    <div class="play-btn">
+                        <svg viewBox="0 0 16 16"><path d="M3 2.5l11 5.5-11 5.5V2.5z"/></svg>
+                    </div>
+                </div>
+                <div class="video-meta">
+                    <span class="video-title">Humane Society</span>
+                    <span class="video-tag">Non-Profit</span>
+                </div>
+            </div>
+
+            <div class="video-card" data-vimeo="878672958" data-title="Seagate Food Bank - The Box" data-tag="Non-Profit">
+                <div class="video-thumb" onclick="playVideo(this)">
+                    <img src="" alt="Seagate Food Bank - The Box thumbnail" loading="lazy">
+                    <div class="play-btn">
+                        <svg viewBox="0 0 16 16"><path d="M3 2.5l11 5.5-11 5.5V2.5z"/></svg>
+                    </div>
+                </div>
+                <div class="video-meta">
+                    <span class="video-title">Seagate Food Bank - The Box</span>
+                    <span class="video-tag">Non-Profit</span>
+                </div>
+            </div>
+
+            <div class="video-card" data-vimeo="817775040" data-title="American Red Cross - Turnpike Crash" data-tag="Non-Profit">
+                <div class="video-thumb" onclick="playVideo(this)">
+                    <img src="" alt="American Red Cross - Turnpike Crash thumbnail" loading="lazy">
+                    <div class="play-btn">
+                        <svg viewBox="0 0 16 16"><path d="M3 2.5l11 5.5-11 5.5V2.5z"/></svg>
+                    </div>
+                </div>
+                <div class="video-meta">
+                    <span class="video-title">American Red Cross - Turnpike Crash</span>
+                    <span class="video-tag">Non-Profit</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <section id="skills">
         <p class="section-label">Capabilities</p>
         <div class="skills-grid">
@@ -483,6 +531,7 @@
             <div class="skill-item">Photoshop</div>
             <div class="skill-item">Illustrator</div>
             <div class="skill-item">Motion Graphics</div>
+            <div class="skill-item">3D Production</div>
             <div class="skill-item">Video Production</div>
             <div class="skill-item">Project Management</div>
             <div class="skill-item">Team Leadership</div>
@@ -498,6 +547,10 @@
             <div class="skill-item">Emotional Intelligence</div>
             <div class="skill-item">Adobe Firefly</div>
             <div class="skill-item">Workfront</div>
+            <div class="skill-item">AI Video Generation</div>
+            <div class="skill-item">Color Grading</div>
+            <div class="skill-item">Brand Storytelling</div>
+            <div class="skill-item">Social Media Content</div>
         </div>
     </section>
 
@@ -529,6 +582,7 @@
                     // Use the large thumbnail
                     img.src = data.thumbnail_url.replace(/_\d+x\d+/, '_640');
                 }
+                // Titles are set explicitly per-card; do not overwrite from oEmbed.
             } catch (e) {
                 // If fetch fails, hide the broken img gracefully
                 const thumb = card.querySelector('.video-thumb');
